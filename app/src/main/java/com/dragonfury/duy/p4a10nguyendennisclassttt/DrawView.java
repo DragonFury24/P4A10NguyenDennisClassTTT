@@ -16,7 +16,6 @@ public class DrawView extends View {
     Cell namInABox [][] = new Cell[rowVar][colVar];
     Paint nam = new Paint();
     private int turnCount;
-    //RectF gameOver = new Paint(getLeft(), getTop(), getRight(), getBottom());
 
     public DrawView(Context context) {
         super(context);
@@ -57,13 +56,6 @@ public class DrawView extends View {
             }
         }
 
-//        for(int j = 0; j < namInABox[0].length; j++) {
-//            for (Cell namBox[] : namInABox) {
-//                if (namBox[j].isOpen() && namBox[j].contains(event.getX(), event.getY())){
-//                    namBox[j].assignState(turnCount++);
-//                }
-//            }
-//        }
         return super.onTouchEvent(event);
     }
 }
