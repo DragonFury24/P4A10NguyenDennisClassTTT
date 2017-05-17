@@ -15,8 +15,8 @@ public class DrawView extends View {
     int colVar = 3;
     Cell namInABox [][] = new Cell[rowVar][colVar];
     Paint nam = new Paint();
-    private int turnCount;
-
+    private int turnCount; //Variable to keep track of whose turn it is
+   
     public DrawView(Context context) {
         super(context);
 
@@ -26,7 +26,7 @@ public class DrawView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        for (int i = 0; i<namInABox.length; i++) {
+        for (int i = 0; i<namInABox.length; i++) { //A combination of a for-loop and enhanced for-loop to go through each array object and draw
             for (Cell namBox : namInABox[i]) {
                 namBox.draw(canvas, nam);
             }
@@ -39,7 +39,7 @@ public class DrawView extends View {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
 
         super.onLayout(changed, left, top, right, bottom);
-        for(int j = 0; j< namInABox.length; j++) {
+        for(int j = 0; j< namInABox.length; j++) { //Assigns position of each box
             for (int i = 0; i < namInABox.length; i++) {
                 namInABox[i][j]=new Cell(getWidth() / rowVar * i, getHeight() * j / colVar, getWidth() / rowVar * (i + 1), getHeight() / colVar * (j+1));
             }
@@ -48,7 +48,7 @@ public class DrawView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        for(int j = 0; j < namInABox.length; j++) {
+        for(int j = 0; j < namInABox.length; j++) { //Loop to check each box if it has been touched
             for (Cell namBox : namInABox[j]) {
                 if (namBox.isOpen() && namBox.contains(event.getX(), event.getY())){
                     namBox.assignState(turnCount++);
