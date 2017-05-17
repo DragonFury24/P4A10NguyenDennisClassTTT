@@ -13,15 +13,15 @@ public class Cell extends RectF {
         super(left, top, right, bottom);
     }
 
-    int state = 100;
+    int state = 100; //Each box is open with a start state of 100
 
     public void draw(Canvas c, Paint p) {
         p.setStyle(Paint.Style.STROKE);
         c.drawRect(this, p);
-        if (state==0) {
+        if (state==0) { //If the state changes to 0 then draw an X
             c.drawLine(this.left, this.top, this.right, this.bottom, p);
             c.drawLine(this.right, this.top, this.left, this.bottom, p);
-        } else if (state==1) {
+        } else if (state==1) { //If state changes to 1 then draw an O
             c.drawCircle(this.centerX(), this.centerY(), this.width()/2, p);
         }
     }
@@ -30,15 +30,15 @@ public class Cell extends RectF {
 
     }
 
-    public boolean isOpen() {
+    public boolean isOpen() { //Request to check if box is open
         return state==100;
     }
 
-    public void assignState(int turnCount) {
+    public void assignState(int turnCount) { //Changes the state to 0 or 1; Alternates because of modular division
         state = turnCount%2;
     }
 
-    public int getState() {
+    public int getState() { //Returns the current value of state
         return state;
     }
 }
